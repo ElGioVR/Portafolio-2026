@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import ContactForm from "./contactform";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface ContactProps {
   darkMode?: boolean;
@@ -13,65 +15,48 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   const [showForm, setShowForm] = useState(false);
   const { t } = useTranslation();
 
-  const isDark =
-    typeof darkMode === "boolean"
-      ? darkMode
-      : typeof window !== "undefined" &&
-        document.body.classList.contains("dark-mode");
-
   return (
-    <section
-      className={`w-full min-h-[60vh] flex flex-col items-center justify-center transition-all duration-300 ${
-        isDark ? "bg-[#15003b]" : "bg-[#fdc9bf]"
-      } ${showForm ? "pt-4 pb-4" : "pt-16 pb-16"}`}
-      id="contact"
-    >
-      {!showForm && (
-        <>
-          <h1
-            className={`text-center font-extrabold leading-tight ${
-              showForm ? "" : "mb-8"
-            }`}
-            style={{
-              fontSize: "clamp(2.5rem, 7vw, 5rem)",
-              color: isDark ? "#fff" : "#181a20",
-            }}
-          >
-            {t("contactSection.titleLine1")} <br />
-            <span
-              className={`text-transparent bg-clip-text bg-gradient-to-r ${
-                isDark
-                  ? "from-[#f43f5e] via-[#a537e0] to-[#6366f1]"
-                  : "from-orange-400 via-pink-500 to-fuchsia-600"
-              }`}
-            >
-              {t("contactSection.titleLine2")}
-            </span>
-          </h1>
-
-          <button
-            onClick={() => setShowForm(true)}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold shadow hover:opacity-90 transition"
-          >
-            {t("contactSection.contactBtn")}
-          </button>
-        </>
-      )}
-
-      <AnimatePresence>
-        {showForm && (
+    <section className="relative z-10 py-24">
+      <div className="section-shell overflow-hidden rounded-[2rem] border p-7 md:p-12" style={{ borderColor: "var(--line-color)", background: "var(--surface-strong)" }}>
+        {!showForm && (
           <motion.div
-            key="contact-form"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end"
           >
-            <ContactForm darkMode={darkMode} />
+            <div>
+              <p className="eyebrow">{t("contactSection.eyebrow")}</p>
+              <h2 className="mt-4 text-4xl font-black leading-tight md:text-7xl">
+                {t("contactSection.titleLine1")}
+                <span className="block text-gradient-wave">{t("contactSection.titleLine2")}</span>
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 muted">{t("contactSection.description")}</p>
+            </div>
+
+            <button onClick={() => setShowForm(true)} className="cta-primary w-full md:w-auto">
+              <MailOutlineIcon fontSize="small" />
+              {t("contactSection.contactBtn")}
+              <ArrowForwardIcon fontSize="small" />
+            </button>
           </motion.div>
         )}
-      </AnimatePresence>
+
+        <AnimatePresence>
+          {showForm && (
+            <motion.div
+              key="contact-form"
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 35 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
+              <ContactForm darkMode={darkMode} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 };

@@ -1,98 +1,132 @@
 {
   "main": {
-    "title1": "HI THERE",
-    "title2": "I'M GIO VAZQUEZ",
-    "course": "Course",
-    "satisfactionRate": "Satisfaction Rate",
-    "succesfullProjects": "Succesfull projects",
-    "businessTransformed": "Business transformed"
+    "availability": "Open to Full Stack roles and remote projects",
+    "title1": "Full Stack",
+    "title2": "Developer",
+    "title3": "detail-oriented",
+    "pitch": "I build fast, scalable web applications with polished user experiences. I combine React, Next.js, Node.js and product thinking to ship ideas with solid technical judgment.",
+    "ctaContact": "Let's talk",
+    "ctaCv": "Download CV",
+    "trustedBy": "Experience with",
+    "roleLabel": "2026 profile",
+    "roleDetail": "Strong frontend, reliable backend and visual judgment for modern products.",
+    "years": "Years of experience",
+    "course": "Courses",
+    "satisfactionRate": "Satisfaction",
+    "succesfullProjects": "Shipped projects",
+    "businessTransformed": "Businesses impacted"
   },
   "menu": {
     "home": "Home",
-    "about": "About me",
+    "about": "Profile",
     "portfolio": "Portfolio",
     "experience": "Experience",
-    "skills": "Skills",
+    "skills": "Stack",
+    "projects": "Projects",
     "contact": "Contact"
   },
   "about": {
-    "title1": "My Amazing",
-    "title2": "Service in",
+    "eyebrow": "About me",
+    "title1": "Clean code.",
+    "title2": "Clear product.",
+    "summary": "I'm Gio Vazquez, a Full Stack Developer based in Tijuana. I focus on modern interfaces, robust APIs and flows that help teams and users move with less friction.",
+    "focusLabel": "Main focus",
+    "impact1": {
+      "label": "Frontend",
+      "value": "React + Next.js"
+    },
+    "impact2": {
+      "label": "Backend",
+      "value": "Node + Nest.js"
+    },
+    "impact3": {
+      "label": "Work",
+      "value": "Remote / Hybrid"
+    },
     "developer": {
-      "title": "Developer",
-      "desc": "Full Stack Developer with over 3 years of experience in building dynamic and scalable web applications.",
-      "details":
-        "Specialized in JavaScript, TypeScript, Node.js, React, Nest.js, and Next.js. Focused on designing efficient architectures, enhancing user experience, and collaborating effectively in multidisciplinary teams. Passionate about tech innovation and optimizing development processes."
+      "title": "Full Stack",
+      "desc": "Scalable web apps, APIs and production-ready architecture.",
+      "details": "I work with JavaScript, TypeScript, React, Next.js, Node.js, Nest.js, GraphQL and databases. I care about maintainable code, useful documentation and solving problems with real business impact."
     },
     "uiux": {
       "title": "UI/UX",
-      "desc": "Professional with experience collaborating closely with designers to create intuitive and user-centered interfaces.",
-      "details":
-        "Focused on improving user experience through efficient and scalable solutions. Committed to usability, accessibility, and the implementation of design best practices in web application development."
+      "desc": "Intuitive, accessible interfaces designed for daily use.",
+      "details": "I collaborate well with design and product teams: turning wireframes into responsive experiences, taking care of states, microinteractions, visual consistency and accessibility."
     },
     "designer": {
-      "title": "Designer",
-      "desc": "Graphic designer with a focus on creating attractive and functional interfaces.",
-      "details":
-        "Dedicated to designing interfaces that optimize user experience and adapt to scalable web architectures."
+      "title": "Visual",
+      "desc": "Visual judgment that turns functional software into memorable product.",
+      "details": "My graphic design background helps me build interfaces with hierarchy, rhythm and clarity. I do not just implement screens: I make the product feel trustworthy, modern and easy to use."
     }
-   
   },
-    "experience": {
+  "experience": {
+    "eyebrow": "Track record",
     "companyGlobal": {
-      "name":"G-Global",
+      "name": "G-Global",
       "role": "Full Stack Developer",
       "date": "December 2021 - February 2025",
-      "details1": "WMS (React, Node.js, MoleculerJS, TypeScript): Developed modules and CRUDs using microservice architecture. Refactored services with MoleculerJS and MongoDB. Applied unit testing with a TDD approach.",
-      "details2": "Globalization (React, NextJS, TypeScript, GraphQL, NestJS): Developed features under monolithic architecture. Implemented GraphQL and NestJS APIs. Unit testing and MongoDB usage."
+      "details1": "WMS: built modules, CRUD flows and service refactors in a microservices architecture using React, Node.js, TypeScript, MoleculerJS and MongoDB.",
+      "details2": "Globalization: shipped features with React, Next.js, TypeScript, GraphQL and Nest.js, including APIs, unit testing and database work."
     },
     "companyGroup": {
-       "name":"JD Group",
-      "role": "Developer (Intern)",
+      "name": "JD Group",
+      "role": "Developer Intern",
       "date": "March 2021 - November 2021",
-      "details1": "Participated in the platform redesign: designed and built the side menu and administrative dashboards."
+      "details1": "Contributed to a platform redesign by building the side navigation, administrative views and dashboards to improve internal workflows."
     },
-    "title": "Work Experience",
-    "description": "I've collaborated with top-tier companies to build production-ready web applications and scalable systems."
+    "title": "Work experience",
+    "description": "I have worked on real business systems: logistics, dashboards, microservices, APIs and web products that need stability, clarity and speed."
   },
-   "skills": {
+  "skills": {
+    "eyebrow": "Stack and strengths",
     "title": "Skills",
+    "description": "Technologies and strengths I use to deliver complete products, from interface to service and data integrations.",
     "webDesign": {
       "title": "Web Design",
-      "description": "UI/UX, Responsive, Wireframing, Research"
+      "description": "UI/UX, responsive design, wireframing, research and visual systems."
     },
     "frontend": {
       "title": "Frontend",
-      "description": "JavaScript, React, Next.js, CSS3, MUI, Tailwind, Astro"
+      "description": "JavaScript, TypeScript, React, Next.js, CSS, MUI, Tailwind and Astro."
     },
     "backend": {
       "title": "Backend",
-      "description": "Node.js, MongoDB, Express, Vercel, TypeScript, Next.js, GraphQL, Python, MySql, SQL Server"
+      "description": "Node.js, Nest.js, Express, GraphQL, MongoDB, MySQL and SQL Server."
     },
     "softSkills": {
-      "title": "Soft Skills",
-      "description": "Communication, Teamwork, Leadership, Commitment"
+      "title": "Collaboration",
+      "description": "Clear communication, ownership, teamwork, leadership and commitment."
     },
     "tools": {
       "title": "Tools",
-      "description": "Figma, Git, NPM, Postman, EsLint"
+      "description": "Figma, Git, npm, Postman, ESLint, Jira, Trello and agile workflows."
     },
     "platforms": {
       "title": "Platforms",
-      "description": "Vercel, Firebase, Supabase, Railway, S3"
+      "description": "Vercel, Firebase, Supabase, Railway, S3 and web deployments."
     },
     "languages": {
       "title": "Languages",
-      "description": "Spanish, English"
+      "description": "Native Spanish and professional English for documentation and collaboration."
     },
     "extra": {
-      "title": "Extra",
-      "description": "Scrum, Kanban, Agile, Trello, Jira"
+      "title": "Process",
+      "description": "Scrum, Kanban, testing, documentation and continuous improvement."
     }
   },
+  "projects": {
+    "eyebrow": "Live from GitHub",
+    "title": "Projects",
+    "description": "This section is automatically powered by my public GitHub repositories. When a repo has a homepage configured, it appears as a direct demo link.",
+    "projectLabel": "Project",
+    "demo": "Demo",
+    "code": "Code",
+    "noDescription": "Public repository available to review code, structure and evolution.",
+    "empty": "Projects could not be loaded from GitHub right now."
+  },
   "contact": {
-    "title": "Get a quote.",
-    "subtitle": "It all starts here.",
+    "title": "Tell me about the challenge.",
+    "subtitle": "Let's answer with technology.",
     "name": "Name",
     "email": "Email address",
     "message": "Message",
@@ -101,26 +135,28 @@
     "budget2": "$1,000 - $5,000",
     "budget3": "$5,000 - $10,000",
     "budget4": "More than $10,000",
-    "noForm": "Hate contact forms?",
+    "noForm": "Prefer direct email?",
     "send": "Send message",
     "sending": "Sending..."
   },
-      "contactSection": {
-    "titleLine1": "Want to create something",
-    "titleLine2": "awesome?",
-    "contactBtn": "Contact me!"
+  "contactSection": {
+    "eyebrow": "Contact",
+    "titleLine1": "Looking for a developer",
+    "titleLine2": "who thinks product too?",
+    "description": "I'm open to Full Stack opportunities, advanced frontend work and projects where technical and visual detail matters.",
+    "contactBtn": "Contact me"
   },
   "thankyouContact": {
     "title": "Thanks for reaching out!",
-    "message": "We're going to build amazing things 🚀"
+    "message": "I'll get back to you soon."
   },
-    "footer": {
-    "description": "Freelance Fullstack Developer in JavaScript, currently based in Tijuana, Baja California",
+  "footer": {
+    "description": "JavaScript/TypeScript Full Stack Developer currently based in Tijuana, Baja California.",
     "madeBy": "Made by",
     "with": "with"
   },
-    "visitCounter": {
+  "visitCounter": {
     "uniqueVisits": "Unique visits",
     "loading": "Loading..."
   }
-  }
+}

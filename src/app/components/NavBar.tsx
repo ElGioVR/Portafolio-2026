@@ -2,7 +2,9 @@
 
 import "../../i18n";
 import I18nButton from "./i18nButton";
-import { useRef } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface NavBarProps {
   darkMode: boolean;
@@ -12,137 +14,87 @@ interface NavBarProps {
 }
 
 export default function NavBar({ darkMode, menuOpen, setMenuOpen, navLinks }: NavBarProps) {
-  const menuRef = useRef<HTMLDivElement>(null);
-
   return (
     <>
-      {/* NAVBAR NORMAL SOLO SI NO ESTÁ EL MENÚ COLAPSADO */}
-      {!menuOpen && (
-        <nav
-          className="flex justify-between items-center px-6 md:px-12 py-4 w-full fixed top-0 left-0 z-30"
-          style={{
-            background: darkMode
-              ? "rgba(41, 29, 49, 0.3)"
-              : "rgba(219, 203, 230, 0.5)",
-            backdropFilter: "blur(2px)",
-            minHeight: "60px",
-          }}
+      <nav className="fixed left-0 top-0 z-40 w-full px-3 py-3 md:px-5">
+        <div
+          className="mx-auto flex min-h-14 w-full max-w-[1180px] items-center justify-between gap-3 rounded-full border px-3 shadow-sm backdrop-blur-2xl md:px-4"
+          style={{ background: "var(--nav-bg)", borderColor: "var(--line-color)" }}
         >
-          {/* Botón móvil a la izquierda */}
-          <div className="md:hidden flex items-center order-1">
-            <button
-              onClick={() => setMenuOpen(true)}
-              className="focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
-              </svg>
-            </button>
-          </div>
+          <a href="#home" className="flex shrink-0 items-center gap-2 font-black">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--text-color)] text-sm text-[var(--background)]">
+              GV
+            </span>
+            <span className="hidden lg:block">Gio Vazquez</span>
+          </a>
 
-          {/* GIO VAZQUEZ e idioma al centro en móvil */}
-<div className="flex flex-1 md:hidden items-center justify-between order-2">
-  <span className="font-bold text-xl" style={{ color: "var(--text-color)", marginLeft: "1rem" }}>
-    GIO VAZQUEZ
-  </span>
-  <div className="ml-4 flex items-center justify-end">
-    <I18nButton darkMode={darkMode} />
-  </div>
-</div>
-
-          {/* Menú desktop */}
-          <div
-            className={`
-              flex-col md:flex-row md:flex gap-8 absolute md:static top-full right-0 w-full md:w-auto shadow md:shadow-none transition-all duration-300
-              hidden md:flex
-              ${darkMode ? "md:bg-transparent bg-[#231d31]" : "md:bg-transparent bg-white"}
-              text-center pr-6 md:pr-0
-              h-screen md:h-auto
-              overflow-y-auto md:overflow-visible
-            `}
-          >
+          <div className="hidden min-w-0 flex-1 items-center justify-center gap-1 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm hover:text-purple-400 transition-colors px-6 py-4 md:p-0"
-                style={{ color: "var(--text-color)", fontSize: ".9rem" }}
-                onClick={() => setMenuOpen(false)}
+                className="whitespace-nowrap rounded-full px-3 py-2 text-sm font-bold muted transition hover:bg-[var(--surface)] hover:text-[var(--text-color)] xl:px-4"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          {/* Escritorio: GIO VAZQUEZ y contacto */}
-          <div className="hidden md:block">
-            <div className="inline-block ml-4">
-              <I18nButton darkMode={darkMode} />
-            </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <I18nButton darkMode={darkMode} />
+            <a
+              href="#contact"
+              className="hidden shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-[var(--text-color)] px-4 py-2 text-sm font-black text-[var(--background)] transition hover:-translate-y-0.5 lg:inline-flex"
+            >
+              Hire <span className="hidden xl:inline">me</span>
+              <ArrowForwardIcon sx={{ fontSize: 16 }} />
+            </a>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="grid h-11 w-11 place-items-center rounded-full border md:hidden"
+              style={{ borderColor: "var(--line-color)" }}
+              aria-label="Open menu"
+            >
+              <MenuIcon />
+            </button>
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
 
-      {/* MENÚ COLAPSABLE MÓVIL */}
       <div
-        ref={menuRef}
-        className={`
-          fixed inset-0 z-50 flex flex-col
-          ${darkMode ? "bg-[#231d31]" : "bg-[#fde9f8]"}
-          bg-opacity-100
-          transition-transform duration-300 ease-in-out
-          ${menuOpen ? "translate-y-0" : "-translate-y-full"}
-          md:hidden
-        `}
+        className={`fixed inset-0 z-50 flex flex-col px-6 py-6 transition-transform duration-300 md:hidden ${
+          menuOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
         style={{
+          background: darkMode ? "#070908" : "#f7f4ef",
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
-        {/* Header del menú colapsable */}
-        <div className="flex items-center w-full px-8 pt-8 pb-2">
-          {/* Botón cerrar a la izquierda */}
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-black">Gio Vazquez</span>
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-2xl ml-1"
+            className="grid h-12 w-12 place-items-center rounded-full border"
+            style={{ borderColor: "var(--line-color)" }}
             aria-label="Close menu"
           >
-            <svg
-              className="w-15 h-15"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <CloseIcon />
           </button>
-          {/* Texto a la derecha */}
         </div>
-        <nav className="w-full mt-4">
-          <ul className="flex flex-col gap-6 w-full px-8 pt-6">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={`block py-2 text-[2.7rem] font-semibold text-right
-                    ${darkMode ? "text-[#f0c0f7] hover:text-[#a78bfa]" : "text-[#2d133b] hover:text-[#a21caf]"}
-                    transition-colors
-                  `}
-                  onClick={() => setMenuOpen(false)}
-                  style={{ lineHeight: "4.2rem" }}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+
+        <nav className="mt-14 flex flex-col gap-2">
+          {navLinks.map((link, index) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="border-b py-5 text-right text-4xl font-black"
+              style={{ borderColor: "var(--line-color)" }}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="mr-4 text-sm muted">0{index + 1}</span>
+              {link.label}
+            </a>
+          ))}
         </nav>
       </div>
     </>

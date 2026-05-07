@@ -1,105 +1,67 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next"; // Asegúrate de tener i18next configurado
+import React from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import CodeIcon from "@mui/icons-material/Code";
+import StorageIcon from "@mui/icons-material/Storage";
+import GroupsIcon from "@mui/icons-material/Groups";
+import BuildIcon from "@mui/icons-material/Build";
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
+import TranslateIcon from "@mui/icons-material/Translate";
+import SchemaIcon from "@mui/icons-material/Schema";
 
 interface SkillsProps {
   darkMode?: boolean;
 }
 
 const skillsData = [
-  { key: "webDesign", emoji: "🎨" },
-  { key: "frontend", emoji: "💻" },
-  { key: "backend", emoji: "🧠" },
-  { key: "softSkills", emoji: "🤝" },
-  { key: "tools", emoji: "🛠️" },
-  { key: "platforms", emoji: "☁️" },
-  { key: "languages", emoji: "🗣️" },
-  { key: "extra", emoji: "📋" },
+  { key: "webDesign", icon: DesignServicesIcon },
+  { key: "frontend", icon: CodeIcon },
+  { key: "backend", icon: StorageIcon },
+  { key: "softSkills", icon: GroupsIcon },
+  { key: "tools", icon: BuildIcon },
+  { key: "platforms", icon: CloudQueueIcon },
+  { key: "languages", icon: TranslateIcon },
+  { key: "extra", icon: SchemaIcon },
 ];
 
-function useInView(options?: IntersectionObserverInit) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isIntersecting, setIntersecting] = useState(false);
-
-  useEffect(() => {
-    if (!ref.current) return;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIntersecting(true);
-        observer.unobserve(entry.target);
-      }
-    }, options);
-
-    observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, [ref, options]);
-
-  return { ref, isIntersecting };
-}
-
-const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
+const Skills: React.FC<SkillsProps> = () => {
   const { t } = useTranslation();
-  const isDark =
-    typeof darkMode === "boolean"
-      ? darkMode
-      : typeof window !== "undefined" &&
-        document.body.classList.contains("dark-mode");
 
   return (
-    <section className="w-full px-4 sm:px-6 md:px-10 lg:px-6 xl:px-0">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-2xl" id="skills">
-        <h2
-          className={`text-4xl font-bold mb-16 ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}
-        >
-          {t("skills.title")}
-          <span
-            className={`ml-1 text-transparent bg-clip-text bg-gradient-to-r ${
-              isDark
-                ? "from-[#f43f5e] via-[#a537e0] to-[#6366f1]"
-                : "from-orange-400 via-pink-500 to-fuchsia-600"
-            }`}
-          >
-            .
-          </span>
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {skillsData.map((skill, index) => {
-            const { ref, isIntersecting } = useInView({ threshold: 0.2 });
-
-            return (
-              <div
-                key={skill.key}
-                ref={ref}
-                className={`rounded-xl p-6 transition-opacity transition-transform duration-700 ease-out
-                  ${
-                    isIntersecting
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  }
-                  ${
-                    isDark
-                      ? "bg-[#0e0a1d] border border-[#32285c] text-white"
-                      : "bg-white border border-[#eee0fa] text-[#32124f]"
-                  }
-                `}
-                style={{
-                  transitionDelay: isIntersecting ? `${index * 150}ms` : "0ms",
-                }}
-              >
-                <div className="text-4xl mb-3">{skill.emoji}</div>
-                <h3 className="text-lg font-semibold mb-2">{t(`skills.${skill.key}.title`)}</h3>
-                <p className="text-sm opacity-80 leading-relaxed">
-                  {t(`skills.${skill.key}.description`)}
-                </p>
-              </div>
-            );
-          })}
+    <section className="section-shell relative z-10 py-24">
+      <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="eyebrow">{t("skills.eyebrow")}</p>
+          <h2 className="mt-4 text-4xl font-black md:text-6xl">
+            {t("skills.title")}
+            <span className="text-gradient-wave">.</span>
+          </h2>
         </div>
+        <p className="max-w-xl text-lg leading-8 muted">{t("skills.description")}</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {skillsData.map((skill, index) => {
+          const Icon = skill.icon;
+          return (
+            <motion.div
+              key={skill.key}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
+              whileHover={{ y: -6 }}
+              className="glass-panel min-h-[210px] rounded-3xl p-6"
+            >
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[var(--text-color)] text-[var(--background)]">
+                <Icon />
+              </div>
+              <h3 className="mt-5 text-xl font-black">{t(`skills.${skill.key}.title`)}</h3>
+              <p className="mt-3 text-sm leading-7 muted">{t(`skills.${skill.key}.description`)}</p>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

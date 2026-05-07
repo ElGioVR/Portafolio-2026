@@ -110,9 +110,9 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
             style={{
               display: 'inline-block',
               padding: '0.2em .6em',
-              borderRadius: '5px',
-              background: darkMode ? '#9c2567' : '#f43f5e',
-              color: '#fff',
+              borderRadius: '999px',
+              background: darkMode ? 'rgba(57, 213, 191, 0.16)' : 'rgba(15, 159, 143, 0.14)',
+              color: darkMode ? '#39d5bf' : '#0f766e',
               fontWeight: 600,
               fontSize: '.7em',
             }}
