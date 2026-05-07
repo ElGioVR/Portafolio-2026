@@ -83,6 +83,7 @@ export default function HeroSection({ darkMode }: { darkMode: boolean }) {
       >
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-4">
           <div className="absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-[var(--accent)] via-[var(--accent-2)] to-[var(--accent-3)]" />
+
           <div className="grid aspect-[4/5] w-full place-items-end overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_50%_18%,rgba(57,213,191,0.26),transparent_34%),linear-gradient(160deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))]">
             <img
               src="/avatars/gio-avatar-v2.png"
@@ -94,6 +95,10 @@ export default function HeroSection({ darkMode }: { darkMode: boolean }) {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/70">
               {t("main.roleLabel")}
             </p>
+          <div className="absolute right-6 top-6 z-10 rounded-full border border-[var(--accent)] bg-[rgba(15,159,143,0.14)] px-2.5 py-1 text-[0.7rem] font-semibold text-[var(--accent)] shadow-[0_10px_30px_rgba(15,159,143,0.18)]">
+            <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+            Tijuana, BC
+          </div>
             <p className="mt-1 text-xl font-black">Gio Vazquez</p>
             <p className="mt-2 text-sm text-white/78">{t("main.roleDetail")}</p>
           </div>

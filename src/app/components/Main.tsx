@@ -77,7 +77,28 @@ export default function Main() {
         style={{ borderColor: "var(--line-color)" }}
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       >
-        <img src={darkMode ? "/sun.svg" : "/moon.svg"} alt="" className="h-6 w-6" />
+        {darkMode ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="5" fill="var(--accent)" />
+            <g stroke="var(--accent)" strokeWidth="2">
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        ) : (
+          <img src="/moon.svg" alt="Moon icon" className="h-6 w-6" />
+        )}
       </button>
     </main>
   );
