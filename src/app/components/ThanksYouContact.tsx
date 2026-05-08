@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 interface ThankYouContactProps {
   darkMode?: boolean;
@@ -22,10 +23,12 @@ const ThankYouContact = ({ darkMode }: ThankYouContactProps) => {
             : "linear-gradient(135deg, rgba(15,159,143,0.12), rgba(255,255,255,0.88))",
         }}
       >
-        <img
+        <Image
           src="/avatars/gio-avatar-v2.png"
           alt="Persona"
-          className="h-20 w-20 rounded-full object-cover shadow-[0_18px_35px_rgba(0,0,0,0.18)]"
+          width={80}
+          height={80}
+          className="rounded-full object-cover shadow-[0_18px_35px_rgba(0,0,0,0.18)]"
         />
       </div>
       <div className="text-center md:text-left">

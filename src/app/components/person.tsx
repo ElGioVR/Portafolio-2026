@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface PersonProps {
   name?: string;
@@ -16,9 +17,9 @@ const Person = ({ name, submitted }: PersonProps) => {
   const displayName = name?.trim() || "";
 
   return (
-    <div className="mx-6 w-full flex justify-center">
+    <div className="relative mx-6 w-full flex justify-center">
       <div className="relative inline-block w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-        <img src={svgSrc} alt="Person" className="w-full h-auto" />
+        <Image src={svgSrc} alt="Person" fill className="object-contain" />
 
         {/* Texto dinámico solo para person2.svg y si hay nombre */}
         {displayName && !submitted && svgSrc === "/person2.svg" && (

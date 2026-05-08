@@ -7,6 +7,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CodeIcon from "@mui/icons-material/Code";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CallSplitIcon from "@mui/icons-material/CallSplit";
+import Image from "next/image";
 
 interface Project {
   id: number;
@@ -109,10 +110,11 @@ export default function Projects() {
                 style={{ borderColor: "var(--line-color)" }}
                 aria-label={project.demoUrl ? `${project.name} demo` : `${project.name} GitHub`}
               >
-                <img
+                <Image
                   src={project.imageUrl}
                   alt={`${project.name} preview`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
                 <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-xs font-black text-black shadow-lg">

@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { format, toZonedTime } from 'date-fns-tz';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   const { name, email, message, budget, lang, visit } = await req.json();
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    console.error("Missing RESEND_API_KEY environment variable");
+    return NextResponse.json({ success: false, error: "Missing RESEND_API_KEY" }, { status: 500 });
+  }
+  const resend = new Resend(resendApiKey);
+
   try {
     let visitEmail = {};
     let adminEmail = {};

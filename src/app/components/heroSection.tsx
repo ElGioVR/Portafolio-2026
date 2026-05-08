@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import DownloadIcon from "@mui/icons-material/Download";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Image from "next/image";
 import StatsBox from "./StatsBox";
 
 export default function HeroSection({ darkMode }: { darkMode: boolean }) {
@@ -62,15 +63,19 @@ export default function HeroSection({ darkMode }: { darkMode: boolean }) {
 
         <div className="mt-10 flex flex-wrap items-center gap-5 muted">
           <span className="text-sm font-bold uppercase">{t("main.trustedBy")}</span>
-          <img
+          <Image
             src={darkMode ? "/jd.png" : "https://www.jdgroup.net/wp-content/uploads/2023/05/logo-jd-group@2.png"}
             alt="JD Group"
-            className="h-10 w-28 object-contain"
+            width={112}
+            height={40}
+            className="object-contain"
           />
-          <img
+          <Image
             src={darkMode ? "https://g-global.com/wp-content/uploads/2023/07/Asset-9.webp" : "/logo-gg.svg"}
             alt="G-Global"
-            className="h-10 w-28 object-contain"
+            width={112}
+            height={40}
+            className="object-contain"
           />
         </div>
       </motion.div>
@@ -84,11 +89,12 @@ export default function HeroSection({ darkMode }: { darkMode: boolean }) {
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-4">
           <div className="absolute left-0 top-0 h-1.5 w-full bg-gradient-to-r from-[var(--accent)] via-[var(--accent-2)] to-[var(--accent-3)]" />
 
-          <div className="grid aspect-[4/5] w-full place-items-end overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_50%_18%,rgba(57,213,191,0.26),transparent_34%),linear-gradient(160deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))]">
-            <img
+          <div className="relative grid aspect-[4/5] w-full place-items-end overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_50%_18%,rgba(57,213,191,0.26),transparent_34%),linear-gradient(160deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01))]">
+            <Image
               src="/avatars/gio-avatar-v2.png"
               alt="Avatar 3D de Gio Vazquez"
-              className="h-full w-full object-contain object-[50% 75%] drop-shadow-[0_24px_55px_rgba(0,0,0,0.35)]"
+              fill
+              className="object-contain object-[50% 75%] drop-shadow-[0_24px_55px_rgba(0,0,0,0.35)]"
             />
           </div>
           <div className="absolute bottom-7 left-7 right-7 rounded-2xl border border-white/20 bg-black/55 p-4 text-white backdrop-blur-md">
