@@ -122,6 +122,7 @@
     "demo": "Demo",
     "code": "Code",
     "noDescription": "Public repository available to review code, structure and evolution.",
+    "noImage": "Preview unavailable",
     "empty": "Projects could not be loaded from GitHub right now."
   },
   "contact": {

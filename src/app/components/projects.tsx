@@ -7,7 +7,6 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import CodeIcon from "@mui/icons-material/Code";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CallSplitIcon from "@mui/icons-material/CallSplit";
-import Image from "next/image";
 
 interface Project {
   id: number;
@@ -115,19 +114,36 @@ export default function Projects() {
                 style={{ borderColor: "var(--line-color)" }}
                 aria-label={project.demoUrl ? `${project.name} demo` : `${project.name} GitHub`}
               >
-                <Image
-                  src={imageErrorMap[project.id] ? "/file.svg" : project.imageUrl}
-                  alt={`${project.name} preview`}
-                  fill
-                  unoptimized
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                  onError={() => handleImageError(project.id)}
-                />
+                {!imageErrorMap[project.id] ? (
+                  <img
+                    src={project.imageUrl}
+                    alt={`${project.name} preview`}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    onError={() => handleImageError(project.id)}
+                  />
+                ) : (
+                  <div className="relative flex h-full w-full flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 p-6 text-white">
+                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.4),_transparent_35%)]" />
+                    <div className="relative z-10">
+                      <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-300/90">
+                        {t("projects.noImage")}
+                      </p>
+                      <h3 className="mt-4 text-2xl font-black capitalize">
+                        {formatName(project.name)}
+                      </h3>
+                      <p className="mt-3 max-w-[85%] text-sm leading-6 text-white/70">
+                        {project.description || t("projects.noDescription")}
+                      </p>
+                    </div>
+                    <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-black text-white shadow-lg">
+                      {project.demoUrl ? t("projects.demo") : t("projects.code")}
+                      <ArrowOutwardIcon sx={{ fontSize: 15 }} />
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
-                <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-xs font-black text-black shadow-lg">
-                  {project.demoUrl ? t("projects.demo") : t("projects.code")}
-                  <ArrowOutwardIcon sx={{ fontSize: 15 }} />
-                </span>
               </a>
 
               <div className="flex flex-1 flex-col p-6">

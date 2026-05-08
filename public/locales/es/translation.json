@@ -123,6 +123,7 @@
     "demo": "Demo",
     "code": "Código",
     "noDescription": "Repositorio público disponible para revisar código, estructura y evolución.",
+    "noImage": "Vista previa no disponible",
     "empty": "No se pudieron cargar proyectos desde GitHub en este momento."
   },
   "contact": {
