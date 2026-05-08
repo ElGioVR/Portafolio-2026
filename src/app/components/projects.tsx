@@ -34,6 +34,11 @@ export default function Projects() {
   const { t, i18n } = useTranslation();
   const [data, setData] = useState<ProjectsResponse>({ projects: [] });
   const [loading, setLoading] = useState(true);
+  const [imageErrorMap, setImageErrorMap] = useState<Record<number, boolean>>({});
+
+  const handleImageError = (projectId: number) => {
+    setImageErrorMap((prev) => ({ ...prev, [projectId]: true }));
+  };
 
   useEffect(() => {
     let active = true;
@@ -111,10 +116,12 @@ export default function Projects() {
                 aria-label={project.demoUrl ? `${project.name} demo` : `${project.name} GitHub`}
               >
                 <Image
-                  src={project.imageUrl}
+                  src={imageErrorMap[project.id] ? "/file.svg" : project.imageUrl}
                   alt={`${project.name} preview`}
                   fill
+                  unoptimized
                   className="object-cover transition duration-500 group-hover:scale-105"
+                  onError={() => handleImageError(project.id)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
                 <span className="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-xs font-black text-black shadow-lg">
