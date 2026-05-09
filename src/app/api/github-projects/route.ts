@@ -31,6 +31,17 @@ function unique(values: string[]) {
   return Array.from(new Set(values.filter(Boolean)));
 }
 
+function projectImageUrl(repo: GitHubRepo) {
+  const params = new URLSearchParams({
+    seed: String(repo.id),
+    name: repo.name,
+    language: repo.language || "Project",
+    description: repo.description || "GitHub project",
+  });
+
+  return `/api/project-image?${params.toString()}`;
+}
+
 function demoCandidates(repoName: string, username: string) {
   const lower = repoName.toLowerCase();
   const camelSplit = repoName
@@ -121,7 +132,7 @@ export async function GET() {
         updatedAt: repo.pushed_at,
         repoUrl: repo.html_url,
         demoUrl: await resolveDemoUrl(repo, username),
-        imageUrl: `https://opengraph.githubassets.com/${repo.id}/${repo.owner.login}/${repo.name}`,
+        imageUrl: projectImageUrl(repo),
       }))
     );
 
