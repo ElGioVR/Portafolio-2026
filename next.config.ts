@@ -2,8 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['g-global.com', 'opengraph.githubassets.com', 'www.jdgroup.net'], // Agrega el dominio permitido
-  }
+    remotePatterns: [
+      { protocol: "https", hostname: "g-global.com" },
+      { protocol: "https", hostname: "opengraph.githubassets.com" },
+      { protocol: "https", hostname: "www.jdgroup.net" },
+    ],
+  },
 };
 
 export default nextConfig;

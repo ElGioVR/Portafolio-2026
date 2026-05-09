@@ -10,7 +10,19 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [".next/**", "node_modules/**", "out/**", "build/**"],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: [
+      "src/app/components/Projects.tsx",
+      "src/app/components/template/ContactConfirmationEmail.tsx",
+    ],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { format, toZonedTime } from "date-fns-tz";
 import React from "react";
 import { render } from "@react-email/render";
-import ContactConfirmationEmail from "@/app/components/template/contactConfirmationEmail";
+import ContactConfirmationEmail from "@/app/components/template/ContactConfirmationEmail";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

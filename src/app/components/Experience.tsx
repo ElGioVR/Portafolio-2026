@@ -52,7 +52,7 @@ const chipColors = [
   { bg: "rgba(89, 103, 232, 0.14)", text: "var(--accent-3)" },
 ];
 
-const TimelineExperience = ({ darkMode }: ExperienceProps) => {
+const Experience = ({ darkMode }: ExperienceProps) => {
   const [selected, setSelected] = useState(0);
   const { t } = useTranslation();
   const active = experiences[selected];
@@ -148,4 +148,4 @@ const TimelineExperience = ({ darkMode }: ExperienceProps) => {
   );
 };
 
-export default TimelineExperience;
+export default Experience;

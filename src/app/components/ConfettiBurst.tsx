@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
 
-export default function ConfettiVisit({ trigger }: { trigger: boolean }) {
+export default function ConfettiBurst({ trigger }: { trigger: boolean }) {
   useEffect(() => {
     if (trigger) {
       confetti({

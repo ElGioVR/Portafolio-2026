@@ -1,18 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
-import AbouthMe from "./abouthMe";
-import AnimatedBackground from "./animateBackGround";
-import ConfferyVisit from "./conffety";
-import Contact from "./contact";
-import Footer from "./footer";
-import HeroSection from "./heroSection";
+import AboutMe from "./AboutMe";
+import AnimatedBackground from "./AnimatedBackground";
+import ConfettiBurst from "./ConfettiBurst";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import HeroSection from "./HeroSection";
 import NavBar from "./NavBar";
-import Projects from "./projects";
-import Skills from "./skills";
-import TimelineExperience from "./experiense";
+import Projects from "./Projects";
+import Skills from "./Skills";
+import Experience from "./Experience";
 
 export default function Main() {
   const [darkMode, setDarkMode] = useState(true);
@@ -50,15 +51,15 @@ export default function Main() {
   return (
     <main className="relative min-h-screen overflow-hidden" style={{ background: "var(--background)", color: "var(--text-color)" }}>
       <NavBar darkMode={darkMode} menuOpen={menuOpen} setMenuOpen={setMenuOpen} navLinks={navLinks} />
-      {newVisit && <ConfferyVisit trigger={newVisit} />}
+      {newVisit && <ConfettiBurst trigger={newVisit} />}
       <AnimatedBackground darkMode={darkMode} />
 
       <HeroSection darkMode={darkMode} />
       <div id="about">
-        <AbouthMe darkMode={darkMode} />
+        <AboutMe darkMode={darkMode} />
       </div>
       <div id="experience">
-        <TimelineExperience darkMode={darkMode} />
+        <Experience darkMode={darkMode} />
       </div>
       <div id="projects">
         <Projects />
@@ -97,7 +98,7 @@ export default function Main() {
             </g>
           </svg>
         ) : (
-          <img src="/moon.svg" alt="Moon icon" className="h-6 w-6" />
+          <Image src="/moon.svg" alt="Moon icon" width={24} height={24} />
         )}
       </button>
     </main>

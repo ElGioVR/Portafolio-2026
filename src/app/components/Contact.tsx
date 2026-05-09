@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import ContactForm from "./contactform";
+import ContactForm from "./ContactForm";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";

@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import ConfferyVisit from "../components/conffety";
-import ThankYouContact from "../components/ThanksYouContact";
+import ConfettiBurst from "./ConfettiBurst";
+import ThankYouContact from "./ThankYouContact";
 import "../../i18n";
 import { useTranslation } from "react-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-interface GetAQuoteSectionProps {
+interface ContactFormProps {
   darkMode?: boolean;
 }
 
-export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
+export default function ContactForm({ darkMode }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -76,7 +76,7 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
 
   return (
     <section data-theme={darkMode ? "dark" : "light"}>
-      {submitted && <ConfferyVisit trigger={true} />}
+      {submitted && <ConfettiBurst trigger={true} />}
 
       {showThankYou ? (
         <ThankYouContact darkMode={darkMode} />

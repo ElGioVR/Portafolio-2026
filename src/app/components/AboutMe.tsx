@@ -9,7 +9,7 @@ import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import DownloadIcon from "@mui/icons-material/Download";
 
-export default function AbouthMe({ darkMode }: { darkMode?: boolean }) {
+export default function AboutMe({ darkMode }: { darkMode?: boolean }) {
   const { t, i18n } = useTranslation();
   const [selected, setSelected] = useState(0);
   const cvFile = i18n.language === "es" ? "/cv/cv-es.pdf" : "/cv/cv-en.pdf";

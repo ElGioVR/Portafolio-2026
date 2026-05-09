@@ -1,7 +1,7 @@
 "use client";
 
 import "../../i18n";
-import I18nButton from "./i18nButton";
+import I18nButton from "./I18nButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
