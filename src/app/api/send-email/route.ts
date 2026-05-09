@@ -21,6 +21,7 @@ const palette = {
 
 const senderEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 const sender = `Gio Form <${senderEmail}>`;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://codebygio.pro";
 
 async function createResendClient() {
   const resendApiKey = process.env.RESEND_API_KEY;
@@ -218,6 +219,7 @@ export async function POST(req: Request) {
         React.createElement(ContactConfirmationEmail, {
           name,
           language: contactLanguage,
+          siteUrl,
         })
       );
 

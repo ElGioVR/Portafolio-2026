@@ -3,6 +3,7 @@ import React from "react";
 interface ContactConfirmationEmailProps {
   name: string;
   language: "es" | "en";
+  siteUrl?: string;
 }
 
 const palette = {
@@ -47,8 +48,10 @@ const copy = {
 export default function ContactConfirmationEmail({
   name,
   language,
+  siteUrl = "https://codebygio.pro",
 }: ContactConfirmationEmailProps) {
   const text = copy[language];
+  const iconUrl = `${siteUrl.replace(/\/$/, "")}/codebygio-icon.png`;
 
   return (
     <div
@@ -80,6 +83,35 @@ export default function ContactConfirmationEmail({
             borderBottom: `1px solid ${palette.line}`,
           }}
         >
+          <div
+            style={{
+              display: "inline-block",
+              width: 58,
+              height: 58,
+              marginBottom: 18,
+              borderRadius: 18,
+              background: "rgba(7, 9, 8, 0.62)",
+              border: "1px solid rgba(243, 247, 244, 0.18)",
+              overflow: "hidden",
+              verticalAlign: "top",
+            }}
+          >
+            <img
+              src={iconUrl}
+              width="58"
+              height="58"
+              alt="codebygio.pro"
+              style={{
+                display: "block",
+                width: 58,
+                height: 58,
+                border: 0,
+                outline: "none",
+                textDecoration: "none",
+              }}
+            />
+          </div>
+
           <p
             style={{
               margin: "0 0 10px",
