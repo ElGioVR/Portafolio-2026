@@ -15,6 +15,7 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
   const [submitted, setSubmitted] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const { i18n, t } = useTranslation();
   const lang = i18n.language;
 
@@ -30,6 +31,7 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage("");
 
     try {
       const res = await fetch("/api/send-email", {
@@ -42,10 +44,28 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
         setSubmitted(true);
         setTimeout(() => setShowThankYou(true), 1800);
       } else {
+        const data = await res.json().catch(() => null);
+        const needsVerifiedDomain =
+          data?.code === "RESEND_DOMAIN_NOT_VERIFIED";
+
         console.error("Error sending email");
+        setErrorMessage(
+          needsVerifiedDomain
+            ? lang === "es"
+              ? "Resend necesita un dominio verificado para mandar confirmaciones a correos externos."
+              : "Resend needs a verified domain to send confirmations to external emails."
+            : lang === "es"
+              ? "No pudimos enviar la confirmacion. Intenta de nuevo o escribeme directo por correo."
+              : "We could not send the confirmation. Please try again or email me directly."
+        );
       }
     } catch (error) {
       console.error("Error:", error);
+      setErrorMessage(
+        lang === "es"
+          ? "No pudimos conectar con el servicio de correo. Intenta de nuevo en unos minutos."
+          : "We could not connect to the email service. Please try again in a few minutes."
+      );
     } finally {
       setLoading(false);
     }
@@ -125,6 +145,19 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
               {loading ? t("contact.sending") : t("contact.send")}
               {!loading && <ArrowForwardIcon fontSize="small" />}
             </button>
+
+            {errorMessage && (
+              <p
+                className="rounded-2xl border px-4 py-3 text-sm font-semibold"
+                style={{
+                  borderColor: "rgba(255, 143, 112, 0.45)",
+                  background: "rgba(255, 143, 112, 0.12)",
+                  color: "var(--text-color)",
+                }}
+              >
+                {errorMessage}
+              </p>
+            )}
           </form>
         </div>
       )}
