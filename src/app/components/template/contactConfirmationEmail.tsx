@@ -28,6 +28,7 @@ const copy = {
     noteTitle: "Mientras tanto",
     note:
       "Si necesitas agregar mas contexto, puedes responder directamente a este correo.",
+    cta: "Visitar codebygio.pro",
     footer: "Este correo confirma que tu solicitud fue recibida correctamente.",
   },
   en: {
@@ -41,6 +42,7 @@ const copy = {
     noteTitle: "In the meantime",
     note:
       "If you need to add more context, you can reply directly to this email.",
+    cta: "Visit codebygio.pro",
     footer: "This email confirms that your request was received successfully.",
   },
 };
@@ -200,6 +202,24 @@ export default function ContactConfirmationEmail({
               {text.note}
             </p>
           </div>
+
+          <a
+            href={siteUrl}
+            target="_blank"
+            style={{
+              display: "inline-block",
+              marginTop: 24,
+              padding: "13px 18px",
+              borderRadius: 999,
+              background: palette.accent,
+              color: "#06100e",
+              fontSize: 14,
+              fontWeight: 800,
+              textDecoration: "none",
+            }}
+          >
+            {text.cta}
+          </a>
 
           <div
             style={{
